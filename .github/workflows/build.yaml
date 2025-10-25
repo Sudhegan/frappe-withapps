@@ -49,10 +49,27 @@ jobs:
           ref: nginx
           path: builds
 
-      - name: Build and push
+      - name: Build and push arm64
         uses: docker/build-push-action@v5
         with:
-          platforms: linux/arm64/v8,linux/amd64
+          platforms: linux/arm64/v8
+          no-cache: true
+          push: true
+          context: builds
+          file: builds/images/custom/Containerfile
+          tags: ${{ secrets.DOCKER_USER }}/frappe-withapps:v15,${{ secrets.DOCKER_USER }}/frappe-withapps:latest
+          build-args: |
+            "progress=plain"
+            "FRAPPE_PATH=${{ env.FRAPPE_REPO }}"
+            "FRAPPE_BRANCH=${{ env.FRAPPE_VERSION }}"
+            "PYTHON_VERSION=${{ env.PY_VERSION }}"
+            "NODE_VERSION=${{ env.NODEJS_VERSION }}"
+            "APPS_JSON_BASE64=${{ env.APPS_JSON_BASE64 }}"
+      
+      - name: Build and push amd64
+        uses: docker/build-push-action@v5
+        with:
+          platforms: linux/amd64
           no-cache: true
           push: true
           context: builds
