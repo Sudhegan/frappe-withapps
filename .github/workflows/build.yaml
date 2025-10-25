@@ -52,7 +52,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
-          platforms: linux/arm64/v8
+          platforms: linux/arm64/v8,linux/amd64
           no-cache: true
           push: true
           context: builds
