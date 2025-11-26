@@ -1,0 +1,26 @@
+[
+  {
+    "url": "https://github.com/frappe/erpnext.git",
+    "branch": "version-15"
+  },
+  {
+    "url": "https://github.com/frappe/payments.git",
+    "branch": "version-15"
+  },
+  {
+    "url": "https://github.com/frappe/print_designer.git",
+    "branch": "develop"
+  },
+  {
+    "url": "https://github.com/frappe/builder.git",
+    "branch": "develop"
+  },
+  {
+    "url": "https://github.com/frappe/non_profit.git",
+    "branch": "develop"
+  },
+  {
+    "url": "https://github.com/frappe/changemakers.git",
+    "branch": "develop"
+  }
+]
