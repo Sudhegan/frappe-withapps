@@ -28,14 +28,17 @@ jobs:
           username: ${{ secrets.DOCKER_USER }}
           password: ${{ secrets.DOCKER_TOKEN }}
 
+      - name: checkout this repo
+        uses: actions/checkout@v6
+        
       - name: Source Build Env
         id: source-build-env
         run: |
-          sudo apt install coreutils
           cat ./build.env >> $GITHUB_ENV
           echo "APPS_JSON_BASE64=$(base64 -w 0 ./apps.json)" >> $GITHUB_ENV
 
-      - uses: actions/checkout@v6
+      - name: checkout frappe docker repo from own
+        uses: actions/checkout@v6
         with:
           repository: sudhegan/frappe_docker
           ref: nginx
