@@ -1,4 +1,4 @@
-name: Build Image fro transmom
+name: Build Image for transmom
 
 on:
   push:
@@ -38,7 +38,7 @@ jobs:
         id: source-build-env
         run: |
           cat ./build.env >> $GITHUB_ENV
-          echo "APPS_JSON_BASE64=$(base64 -w 0 ./apps-transmom.json)" >> $GITHUB_ENV
+          echo "APPS_JSON_BASE64=$(base64 -w 0 ./apps_transmom.json)" >> $GITHUB_ENV
 
       - name: Check disk space
         run: df -h
@@ -60,7 +60,7 @@ jobs:
           push: true
           context: builds
           file: builds/images/custom/Containerfile
-          tags: ${{ secrets.DOCKER_USER }}/frappe-withapps:v15,${{ secrets.DOCKER_USER }}/frappe-withapps:latest
+          tags: ${{ secrets.DOCKER_USER }}/frappe-withapps:transmom
           build-args: |
             "progress=plain"
             "FRAPPE_PATH=${{ env.FRAPPE_REPO }}"
