@@ -1,9 +1,10 @@
 name: Build Image for transmom
 
 on:
-  push:
-    branches:
-      - main
+  workflow_run:
+    workflows: [Build Image]
+    types:
+      - completed
   workflow_dispatch:
   
 jobs:
