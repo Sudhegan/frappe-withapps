@@ -32,6 +32,7 @@ jobs:
       - name: Source Build Env
         id: source-build-env
         run: |
+          apt install cat
           cat ./build.env >> $GITHUB_ENV
           echo "APPS_JSON_BASE64=$(base64 -w 0 ./apps_transmom.json)" >> $GITHUB_ENV
 
