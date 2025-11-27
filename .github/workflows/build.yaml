@@ -10,6 +10,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+
+      - name: Move /var/lib/docker/
+        run: sudo mv /var/lib/docker/ "${GITHUB_WORKSPACE}/docker"
+
       - name: Maximize build disk space
         uses: easimon/maximize-build-space@master
         with:
@@ -17,8 +21,10 @@ jobs:
           remove-android: 'true'
           remove-haskell: 'true'
           remove-codeql: 'true'
-          remove-docker-images: 'true'
-          root-reserve-mb: '51200'
+          build-mount-path: /var/lib/docker/
+
+      - name: Restore /var/lib/docker/
+        run: sudo sh -c "mv ${GITHUB_WORKSPACE}/docker/* /var/lib/docker"
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
