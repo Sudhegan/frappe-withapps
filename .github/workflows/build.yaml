@@ -68,3 +68,8 @@ jobs:
             "PYTHON_VERSION=${{ env.PY_VERSION }}"
             "NODE_VERSION=${{ env.NODEJS_VERSION }}"
             "APPS_JSON_BASE64=${{ env.APPS_JSON_BASE64 }}"
+            
+      - name: check storage after fail
+        run: |
+          echo "Free space:"
+          df -h
