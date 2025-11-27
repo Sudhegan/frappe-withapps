@@ -18,8 +18,7 @@ jobs:
           remove-haskell: 'true'
           remove-codeql: 'true'
           remove-docker-images: 'true'
-          overprovision-lvm: 'true'
-          root-reserve-mb: '71680'
+          root-reserve-mb: '51200'
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
