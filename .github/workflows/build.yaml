@@ -19,6 +19,7 @@ jobs:
           remove-codeql: 'true'
           remove-docker-images: 'true'
           overprovision-lvm: 'true'
+          root-reserve-mb: '71680'
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -69,8 +70,3 @@ jobs:
             "PYTHON_VERSION=${{ env.PY_VERSION }}"
             "NODE_VERSION=${{ env.NODEJS_VERSION }}"
             "APPS_JSON_BASE64=${{ env.APPS_JSON_BASE64 }}"
-
-      - name: check storage after fail
-        run: |
-          echo "Free space:"
-          df -h
